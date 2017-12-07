@@ -1,0 +1,425 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>Web Development</title>
+
+    <link rel="stylesheet" href="css/reveal.css">
+    <link rel="stylesheet" href="css/theme/black.css">
+
+    <!-- Theme used for syntax highlighting of code -->
+    <link rel="stylesheet" href="lib/css/zenburn.css">
+
+    <!-- Printing and PDF exports -->
+    <script>
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match(/print-pdf/gi) ? 'css/print/pdf.css' : 'css/print/paper.css';
+        document.getElementsByTagName('head')[0].appendChild(link);
+    </script>
+</head>
+<body>
+<div class="reveal">
+    <div class="slides">
+        <section data-background-image="lib/repeatable_pattern_background.jpg">
+            <section>
+                <h2>A brief introduction to modern JavaScript</h2>
+                <div class="authors-footer" style="font-size:30px">
+                    <p>Kamil Kupczyński
+                        <i>kamil.kupczynski@sap.com</i></p>
+                </div>
+            </section>
+
+            <section>
+                <h2>Agenda</h2>
+                <ul class="unordered-list">
+                    <li class="fragment">JavaScript - what it really is?</li>
+                    <li class="fragment">why should you learn it?</li>
+                    <li class="fragment">key concepts</li>
+                    <li class="fragment">ECMAScript 2015 and beyond - new features</li>
+                    <li class="fragment">learning resources</li>
+                </ul>
+            </section>
+        </section>
+
+        <section data-background-image="lib/repeatable_pattern_background.jpg">
+            <section>
+                <h3>Back in the days...</h3>
+                <ul>
+                    <li class="fragment">a toy for web designers?</li>
+                    <li class="fragment">built in 10 days</li>
+                    <li class="fragment">design errors</li>
+                    <li class="fragment">awful tools</li>
+                </ul>
+            </section>
+            <section>
+                <h3>really?</h3>
+                <pre class="fragment" data-fragment-index="1"><code data-trim>
+> [] + []
+  ''
+</code></pre>
+                <pre class="fragment" data-fragment-index="2"><code data-trim>
+> [] + {}
+  '[object Object]'
+</code></pre>
+                <pre class="fragment current-visible" data-fragment-index="3"><code data-trim>
+> {} + []
+</code></pre>
+                <pre class="fragment" data-fragment-index="4"><code data-trim>
+> {} + []
+  0
+</code></pre>
+            </section>
+            <section>
+                <img src="lib/questg.jpg" style="width:75%; height:auto;"/>
+            </section>
+
+        </section>
+
+        <section data-background-image="lib/repeatable_pattern_background.jpg">
+            <aside class="notes">
+                mity
+                js/java - skladnia/autoboxing
+            </aside>
+            <h3>What JavaScript really is?</h3>
+            <img src="lib/javascript-java.jpg" class="fragment current-visible"/>
+            <ul>
+                <li class="fragment">object-oriented</li>
+                <li class="fragment">functional</li>
+                <li class="fragment">multi-purpose (browser, server...)</li>
+                <li class="fragment">interpreted</li>
+                <li class="fragment">single-threaded</li>
+                <li class="fragment">dynamically typed</li>
+            </ul>
+        </section>
+
+        <section data-background-image="lib/repeatable_pattern_background.jpg">
+            <section>
+                <h3>Why should you learn it?</h3>
+                <ul>
+                    <li class="fragment" data-fragment-index="1">extremely useful (client, server, mobile etc.)</li>
+                    <li class="fragment" data-fragment-index="2">JSON</li>
+                    <li class="fragment" data-fragment-index="3">NoSQL databases</li>
+                    <li class="fragment" data-fragment-index="4">THE language of the client-side web</li>
+                    <li class="fragment" data-fragment-index="5">has a future</li>
+                    <li class="fragment" data-fragment-index="5">constantly growing, in development</li>
+                    <li class="fragment" data-fragment-index="5">huge community</li>
+                </ul>
+            </section>
+            <section>
+                <h3>Stackoverflow Developer Survey</h3>
+                <img src="lib/copyingstack.jpg" style="width:40%; height:auto;" class="fragment"/>
+            </section>
+            <section>
+                <h3>Stackoverflow Developer Survey</h3>
+                <p>Most Popular Programming Languages</p>
+                <img src="lib/so1.png" style="width:70%; height:auto;"/>
+            </section>
+            <section>
+                <h3>Stackoverflow Developer Survey</h3>
+                <img src="lib/so2.png" style="width:70%; height:auto;"/>
+            </section>
+            <section>
+                <h3>Stackoverflow Developer Survey</h3>
+                <img src="lib/so3.png" style="width:70%; height:auto;"/>
+            </section>
+        </section>
+
+        <section data-background-image="lib/repeatable_pattern_background.jpg">
+            <section>
+                <aside class="notes">
+
+                </aside>
+                <h3>key concepts</h3>
+                <ul>
+                    <li class="fragment">flexible objects without <i>class</i> blueprint</li>
+                    <li class="fragment">first-class functions / higher-order functions</li>
+                    <li class="fragment">closures</li>
+                    <li class="fragment">prototypal inheritance</li>
+                </ul>
+            </section>
+            <section>
+                <h3>prototypes</h3>
+                <img src="lib/proto.png" style="width:75%; height:auto;"/>
+            </section>
+        </section>
+
+        <section data-background-image="lib/repeatable_pattern_background.jpg">
+            <section>
+                <h3>ECMAScript 2015 and beyond</h3>
+                <ul>
+                    <li class="fragment">var, let, const</li>
+                    <li class="fragment">arrow functions</li>
+                    <li class="fragment">template literals</li>
+                    <li class="fragment">better function parameters handling</li>
+                    <li class="fragment">destructuring assignment</li>
+                </ul>
+            </section>
+
+            <section>
+                <h3>var, let, const?</h3>
+                <pre class="fragment"><code data-trim>
+function wtf() {
+  var outerVariable = 'outer';
+  if (outerVariable) {
+    var innerVariable = 'inner';
+
+    console.log(outerVariable); // logs 'outer'
+    console.log(innerVariable); // logs 'inner'
+  }
+
+  console.log(outerVariable); // ?
+  console.log(innerVariable); // ?
+}
+</code></pre>
+            </section>
+            <section>
+                <h3>var, let, const?</h3>
+                <pre><code data-trim>
+function wtf() {
+  var outerVariable = 'outer';
+  if (outerVariable) {
+    var innerVariable = 'inner';
+
+    console.log(outerVariable); // logs 'outer'
+    console.log(innerVariable); // logs 'inner'
+  }
+
+  console.log(outerVariable); // logs 'outer'
+  console.log(innerVariable); // logs 'inner'
+}
+</code></pre>
+            </section>
+            <section>
+                <h3>var, let, const?</h3>
+                <pre><code data-trim>
+function ooops() {
+  var trickyVariable = 'outer';
+  if (trickyVariable) {
+    var trickyVariable = 'inner';
+
+    console.log(trickyVariable); // logs 'inner'
+  }
+
+  console.log(trickyVariable); // logs 'inner'
+}
+</code></pre>
+            </section>
+            <section>
+                <h3>var, let, const?</h3>
+                <pre><code data-trim>
+function nowItsBetter() {
+  let outerVariable = 'outer';
+  if (outerVariable) {
+    let innerVariable = 'inner';
+
+    console.log(outerVariable); // logs 'outer'
+    console.log(innerVariable); // logs 'inner'
+  }
+
+  console.log(outerVariable); // logs 'outer'
+  console.log(innerVariable); // ReferenceError:
+                              // innerVariable is not defined
+}
+</code></pre>
+            </section>
+            <section>
+                <h3>var, let, const?</h3>
+                <pre><code data-trim>
+> const imConstant = 'tryToChangeMe';
+> imConstant = 'trying';
+  TypeError: Assignment to constant variable.
+</code></pre>
+            </section>
+            <section>
+                <h3>var, let, const?</h3>
+                <blockquote>
+                    If a feature is sometimes useful and sometimes dangerous and if there is a better option then always
+                    use the better option.
+                </blockquote>
+                <p>
+                    <small>~ Douglas Crockford, a smart guy</small>
+                </p>
+            </section>
+            <section>
+                <img src="lib/makelet.jpg" style="width:40%; height:auto;"/>
+            </section>
+        </section>
+
+
+        <section section data-background-image="lib/repeatable_pattern_background.jpg">
+            <section>
+                <h2>Arrow Functions</h2><br/>
+                <pre class="fragment"><code data-trim>
+let sum = function(a, b) {
+    return a + b;
+}
+</code></pre>
+                <pre class="fragment"><code data-trim>
+let sum = (a, b) => a + b;
+</code></pre>
+            </section>
+
+            <section>
+                <h2>Arrow Functions</h2><br/>
+                <pre class="fragment"><code data-trim>
+const grades = [3, 4, 2, 4, 4];
+const betterGrades = grades.map(function(grade) {
+  return grade + 1;
+});
+</code></pre>
+                <pre class="fragment"><code data-trim>
+const betterGrades = grades.map(grade => grade + 1);
+</code></pre>
+            </section>
+
+            <section>
+                <h2>Template Literals</h2><br/>
+                <font size="6"><pre class="fragment"><code data-trim>
+let oldWay = 'Hi, my name is ' +  this.name + ' and I am ' + this.age + ' years old';
+</code></pre></font>
+                <font size="6"><pre class="fragment"><code data-trim>
+let newWay = `Hi, my name is ${this.name} and I am ${this.age} years old`;
+</code></pre></font>
+            </section>
+
+            <section>
+                <h3>Function Parameters Handling</h3><br/>
+                <pre class="fragment"><code data-trim>
+function sum(a, b, c, d) {
+  return a + b + c + d;
+}
+
+let result = sum(1, 2); // NaN
+</code></pre>
+                <pre class="fragment"><code data-trim>
+function sum(a, b, c, d) {
+  if (c === undefined) {
+    c = 0;
+  }
+  if (d === undefined) {
+    d = 0;
+  }
+
+  return a + b + c + d;
+}
+
+let result = sum(1, 2); // 3
+</code></pre>
+            </section>
+
+            <section>
+                <h3>Function Parameters Handling</h3><br/>
+                <pre class="fragment"><code data-trim>
+function sum(a, b, c = 0, d = 0) {
+  return a + b + c + d;
+}
+
+let result = sum(1, 2); // 3
+</code></pre>
+            </section>
+
+         <section>
+             <h3>Destructuring Assignment</h3><br/>
+             <pre class="fragment"><code data-trim>
+const person = {
+  name: 'Dwight',
+  surname: 'Schrute',
+  country: 'USA',
+  city: 'Scranton',
+  job: 'Assistant to the Regional Manager',
+//...
+};
+
+let name = person.name;
+let surname = person.surname;
+let country = person.country;
+let city = person.city;
+let job = person.job;
+//...
+</code></pre>
+         </section>
+            <section>
+                <h3>Destructuring Assignment</h3><br/>
+                <pre><code data-trim>
+const person = {
+  name: 'Dwight',
+  surname: 'Schrute',
+  country: 'USA',
+  city: 'Scranton',
+  job: 'Assistant to the Regional Manager',
+//...
+};
+
+let { name, surname, country, city, job } = person;
+</code></pre>
+            </section>
+
+        </section>
+
+
+        <section section data-background-image="lib/repeatable_pattern_background.jpg">
+
+            <section>
+                <h3>further reading</h3>
+
+                <ul><font size="5">
+                    <li class="fragment">Head First JavaScript Programming - <i>Elisabeth Robson, Eric Freeman</i></li>
+                    <li class="fragment"><a href="https://www.leveluptutorials.com/tutorials/javascript-tutorials/">LevelUpTuts - JavaScript tutorial (video)</a></li>
+                    <li class="fragment"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript">Mozilla Developer Network - JavaScript (www)</a></li>
+
+                    <br>
+                    <li class="fragment">The Principles of Object-Oriented JavaScript - <i>Nicholas C. Zakas</i></li>
+                    <li class="fragment">You Don't Know JS - <i>Kyle Simpson</i></li>
+                    <li class="fragment">Exploring ES6 - <i>Axel Rauschmayer</i></li>
+                </font></ul>
+            </section>
+
+            <section>
+                    <h4><a>14.12.2017</a> - Web Applications Testing</h4><br/>
+
+                    <img style="width:8%; border:none; background:transparent" src="lib/square-facebook-512.png" /> Hack.your.Career<br/>
+            </section>
+
+            <section>
+                <h1 style="text-transform:none">Thank You!</h1>
+
+                <p style="position: relative; top: 250px"><a href="http://surveymonkey.com/r/2NQT6XS">http://surveymonkey.com/r/2NQT6XS</a>
+                </p>
+
+                <div class="authors-footer" style="font-size:30px">
+                    <p>Kamil Kupczyński
+                        <i>kamil.kupczynski@sap.com</i></p>
+                </div>
+            </section>
+        </section>
+
+    </div>
+</div>
+
+<script src="lib/js/head.min.js"></script>
+<script src="js/reveal.js"></script>
+
+<script>
+    // More info https://github.com/hakimel/reveal.js#configuration
+    Reveal.initialize({
+        history: true,
+
+        // More info https://github.com/hakimel/reveal.js#dependencies
+        dependencies: [
+            {src: 'plugin/markdown/marked.js'},
+            {src: 'plugin/markdown/markdown.js'},
+            {src: 'plugin/notes/notes.js', async: true},
+            {
+                src: 'plugin/highlight/highlight.js', async: true, callback: function () {
+                hljs.initHighlightingOnLoad();
+            }
+            }
+        ]
+    });
+</script>
+</body>
+</html>
